@@ -1,6 +1,7 @@
 import commonjs from '@rollup/plugin-commonjs'
 import config from 'sapper/config/rollup'
 import dotenv from 'dotenv'
+import dotenvExpand from 'dotenv-expand'
 import json from '@rollup/plugin-json'
 import resolve from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
@@ -16,7 +17,7 @@ const cssBundler = require('./bundlers/css.bundler')
 const warnBundler = require('./bundlers/warning.bundler')
 const svelteConfig = require('./svelte.config')
 
-const environment = dotenv.config().parsed
+const environment = dotenvExpand(dotenv.config()).parsed
 
 const mode = process.env.NODE_ENV
 const dev = mode === 'development'
